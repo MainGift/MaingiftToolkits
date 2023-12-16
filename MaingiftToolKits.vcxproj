@@ -89,17 +89,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <QtRcc Include="toolkits.qrc" />
+    <QtUic Include="Pdf2Word.ui" />
     <QtUic Include="toolkits.ui" />
     <QtMoc Include="toolkits.h" />
+    <ClCompile Include="Pdf2Word.cpp" />
     <ClCompile Include="toolkits.cpp" />
     <ClCompile Include="main.cpp" />
     <None Include="MaingiftToolKits.ico" />
     <ResourceCompile Include="MaingiftToolKits.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Pdf2Word.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />
   </ImportGroup>
-  <ImportGroup Label="ExtensionTargets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\Spire.PDF.Cpp.9.12.0\build\native\Spire.PDF.Cpp.targets" Condition="Exists('packages\Spire.PDF.Cpp.9.12.0\build\native\Spire.PDF.Cpp.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Spire.PDF.Cpp.9.12.0\build\native\Spire.PDF.Cpp.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Spire.PDF.Cpp.9.12.0\build\native\Spire.PDF.Cpp.targets'))" />
+  </Target>
 </Project>

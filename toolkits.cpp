@@ -6,11 +6,13 @@ ToolKits::ToolKits(QWidget *parent)
     ui.setupUi(this);
 
     ui.pdf2word->disconnect();
-    connect(ui.youGet, SIGNAL(clicked()), this, SLOT(on_downloadvideo_clicked()));
+    connect(ui.pdf2word, SIGNAL(clicked()), this, SLOT(on_pdf2word_clicked()));
 }
 
 ToolKits::~ToolKits()
 {}
 
-void ToolKits::on_downloadvideo_clicked() {
+void ToolKits::on_pdf2word_clicked() {
+    Pdf2Word* SonWidget = new Pdf2Word;
+    SonWidget->show();
 }
