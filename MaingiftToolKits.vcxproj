@@ -98,10 +98,14 @@
     <ClCompile Include="toolkits.cpp" />
     <ClCompile Include="main.cpp" />
     <None Include="MaingiftToolKits.ico" />
+    <ResourceCompile Include="FileAttr.rc" />
     <ResourceCompile Include="MaingiftToolKits.rc" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Pdf2Word.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

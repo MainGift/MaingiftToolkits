@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Pdf2Word</string>
+   <string>Pdf转换为Word文档</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
