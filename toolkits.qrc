@@ -1,4 +1,5 @@
 <RCC>
-    <qresource prefix="ToolKits">
+    <qresource prefix="/ToolKits">
+        <file>MaingiftToolKits.ico</file>
     </qresource>
 </RCC>
