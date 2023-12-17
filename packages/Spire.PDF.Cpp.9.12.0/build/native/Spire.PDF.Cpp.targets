@@ -1,0 +1,44 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Force-Enable-spire-pdf-cpp)' == '' And ((!$(PlatformToolset.Contains('v14'))) Or ('$(Platform)' != 'x64' And '$(Platform)' != 'Win32') Or '$(ApplicationType)' != '')">
+    <Disable-spire-pdf-cpp>true</Disable-spire-pdf-cpp>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Force-Disable-spire-pdf-cpp)' != ''">
+    <Disable-spire-pdf-cpp>true</Disable-spire-pdf-cpp>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Disable-spire-pdf-cpp)' == ''">
+    <ClCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Disable-spire-pdf-cpp)' == ''">
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(MSBuildThisFileDirectory)lib\x64\Release\Spire.Pdf.Cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(MSBuildThisFileDirectory)lib\x64\Debug\Spire.Pdf.Cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(MSBuildThisFileDirectory)lib\Win32\Release\Spire.Pdf.Cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(MSBuildThisFileDirectory)lib\Win32\Debug\Spire.Pdf.Cpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile>
+      <DisableSpecificWarnings>4244;4250;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64' And '$(Disable-spire-pdf-cpp)' == ''">
+    <ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\x64\Release\Spire.Pdf.Cpp.dll" />
+    <ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\x64\Release\Spire.Pdf.Cpp.lib" />
+	<ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\x64\Release\Spire.Pdf.Base.dll" />
+    <ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\x64\Release\libSkiaSharp.dll" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64' And '$(Disable-spire-pdf-cpp)' == ''">
+    <ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\x64\Debug\Spire.Pdf.Cpp.dll" />
+    <ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\x64\Debug\Spire.Pdf.Cpp.lib" />
+	<ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\x64\Debug\Spire.Pdf.Base.dll" />
+    <ReferenceCopyLocalPaths Include="$(MSBuildThisFileDirectory)lib\x64\Debug\libSkiaSharp.dll" />
+  </ItemGroup>
+
+  <Target Name="PlatformCheck" BeforeTargets="PrepareForBuild">
+    <Error Condition="!$(PlatformToolset.Contains('v14'))" Text="Spire.Pdf for C++ Library error: Only 'v14x' toolset is supported." />
+    <Error Condition="'$(Platform)' != 'x64'" Text="Spire.Pdf for C++ Library error: Only 'x64' platforms are supported, but the current platform is '$(Platform)'." />
+  </Target>
+</Project>
