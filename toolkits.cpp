@@ -20,8 +20,8 @@ ToolKits::ToolKits(QWidget *parent)
 
     QMenu* menu = new QMenu;
     QAction* showApp, * quitApp;
-    showApp = new QAction("Show Main Window");
-    quitApp = new QAction("Exit");
+    showApp = new QAction("\346\230\276\347\244\272\344\270\273\347\252\227\345\217\243");
+    quitApp = new QAction("\351\200\200\345\207\272");
     connect(showApp, &QAction::triggered, [&]() {showNormal(); });
     connect(quitApp, &QAction::triggered, [&]() {QCoreApplication::quit(); });
 

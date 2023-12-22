@@ -5,8 +5,8 @@ Pdf2Word::Pdf2Word(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-	filter << tr("Portable Document File (*.pdf)")
-		<< tr("All Files (*.*)");
+	filter << "\345\217\257\347\247\273\346\244\215\346\226\207\346\241\243 (*.pdf)"
+		<< "\346\211\200\346\234\211\346\226\207\344\273\266 (*.*)";
 	connect(ui.filename_btn, SIGNAL(clicked()), this, SLOT(on_filename_clicked()));
 	connect(ui.output_btn, SIGNAL(clicked()), this, SLOT(on_output_clicked()));
 }
@@ -15,7 +15,8 @@ Pdf2Word::~Pdf2Word()
 {}
 
 void Pdf2Word::on_filename_clicked() {
-	QString qpath = QFileDialog::getOpenFileName(this, tr("MaingiftToolkits"), QApplication::applicationDirPath(), filter.join(";;"));
+	QString qpath = QFileDialog::getOpenFileName(this, "Maingift\345\267\245\345\205\267\347\256\261", 
+		QApplication::applicationDirPath(), filter.join(";;"));
 	std::wstring str = qpath.toStdWString();
 	LPCWSTR path = str.c_str();
 
@@ -27,13 +28,15 @@ void Pdf2Word::on_filename_clicked() {
 }
 
 void Pdf2Word::on_output_clicked() {
-	QString qpath = QFileDialog::getSaveFileName(this, tr("MaingiftToolkits"), QApplication::applicationDirPath(), "Word Documents (*.doc *.docx)");
+	QString qpath = QFileDialog::getSaveFileName(this, "Maingift\345\267\245\345\205\267\347\256\261", 
+		QApplication::applicationDirPath(), "Word\346\226\207\346\241\243 (*.doc *.docx)");
 	std::wstring str = qpath.toStdWString();
 	LPCWSTR path = str.c_str();
 
 	if (!(path)) return ;
 	if (pdf == nullptr) {
-		QMessageBox showerror(QMessageBox::Warning, tr("MaingiftToolkits"), tr("Cannot Open Pdf Document"), QMessageBox::Ok);
+		QMessageBox showerror(QMessageBox::Warning, "Maingift\345\267\245\345\205\267\347\256\261", 
+			"\346\227\240\346\263\225\346\211\223\345\274\200\346\226\207\344\273\266", QMessageBox::Ok);
 		showerror.exec();
 		return ;
 	}
