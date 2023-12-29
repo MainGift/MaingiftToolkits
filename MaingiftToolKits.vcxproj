@@ -64,6 +64,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Link>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -91,9 +96,11 @@
   <ItemGroup>
     <None Include="packages.config" />
     <QtRcc Include="toolkits.qrc" />
+    <QtUic Include="Pdf2Image.ui" />
     <QtUic Include="Pdf2Word.ui" />
     <QtUic Include="toolkits.ui" />
     <QtMoc Include="toolkits.h" />
+    <ClCompile Include="Pdf2Image.cpp" />
     <ClCompile Include="Pdf2Word.cpp" />
     <ClCompile Include="toolkits.cpp" />
     <ClCompile Include="main.cpp" />
@@ -105,6 +112,7 @@
     <QtMoc Include="Pdf2Word.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="Pdf2Image.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -4,19 +4,19 @@
 #include <qmessagebox.h>
 #include <qfiledialog.h>
 #include <qstringlist.h>
-#include "ui_Pdf2Word.h"
+#include "ui_Pdf2Image.h"
 #include "Spire.Pdf.o.h"
 
-class Pdf2Word : public QWidget
+class Pdf2Image : public QWidget
 {
 	Q_OBJECT
 
 public:
-	Pdf2Word(QWidget *parent = nullptr);
-	~Pdf2Word();
+	Pdf2Image(QWidget *parent = nullptr);
+	~Pdf2Image();
 
 private:
-	Ui::Pdf2WordClass ui;
+	Ui::Pdf2ImageClass ui;
 	QStringList filter;
 	Spire::Pdf::PdfDocument* pdf = nullptr;
 

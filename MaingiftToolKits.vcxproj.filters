@@ -49,6 +49,9 @@
     <ClCompile Include="Pdf2Word.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Pdf2Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -57,9 +60,15 @@
     <QtMoc Include="Pdf2Word.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Pdf2Image.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Pdf2Word.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Pdf2Image.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

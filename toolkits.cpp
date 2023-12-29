@@ -11,7 +11,9 @@ ToolKits::ToolKits(QWidget *parent)
     ui.setupUi(this);
 
     ui.pdf2word->disconnect();
+    ui.pdf2img->disconnect();
     connect(ui.pdf2word, SIGNAL(clicked()), this, SLOT(on_pdf2word_clicked()));
+    connect(ui.pdf2img, SIGNAL(clicked()), this, SLOT(on_pdf2img_clicked()));
 
     QApplication::setQuitOnLastWindowClosed(false);
 
@@ -42,5 +44,10 @@ ToolKits::~ToolKits()
 
 void ToolKits::on_pdf2word_clicked() {
     Pdf2Word* SonWidget = new Pdf2Word;
+    SonWidget->show();
+}
+
+void ToolKits::on_pdf2img_clicked() {
+    Pdf2Image* SonWidget = new Pdf2Image;
     SonWidget->show();
 }
